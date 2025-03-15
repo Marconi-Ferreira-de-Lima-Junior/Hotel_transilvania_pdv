@@ -18,10 +18,10 @@ def login_view(request):
         else:
             # Exibe uma mensagem de erro se as credenciais forem inválidas
             messages.error(request, 'Usuário ou senha incorretos.')
-            return render(request, 'hotel_transilvania_pdv/login.html')  # Retorna para a página de login com mensagem de erro
+            return render(request, 'pdv/login.html')  # Retorna para a página de login com mensagem de erro
     else:
         # Se o método não for POST, exibe o formulário de login
-        return render(request, 'hotel_transilvania_pdv/login.html')
+        return render(request, 'pdv/login.html')
     
 def logout_view(request):
     logout(request)
