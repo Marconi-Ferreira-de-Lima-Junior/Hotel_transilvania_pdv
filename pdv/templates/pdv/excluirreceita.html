@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Receita - Hotel Transilvania</title>
+    <style>
+        body {
+            font-family: 'Crimson Text', serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-family: 'MedievalSharp', cursive;
+            color: #ffd700;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .confirmation-box {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #2a2a2a;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .confirmation-box p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-group button, .button-group a {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button-group button {
+            background-color: #ff0000;
+            color: #fff;
+        }
+        .button-group button:hover {
+            background-color: #cc0000;
+        }
+        .button-group a {
+            background-color: #ffd700;
+            color: #1a1a1a;
+        }
+        .button-group a:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+<body>
+    <h1>Excluir Receita</h1>
+    <div class="confirmation-box">
+        <p>Tem certeza que deseja excluir a receita "{{ receita.descricao }}"?</p>
+        <div class="button-group">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Sim, Excluir</button>
+            </form>
+            <a href="{% url 'receitas' %}">Cancelar</a>
+        </div>
+    </div>
+</body>
+</html>

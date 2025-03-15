@@ -69,7 +69,7 @@ def cadastrar_cliente(request):
     else:
         form = ClienteForm()
     
-    return render(request, 'pdv/cadastrar_cliente.html', {'form':form})
+    return render(request, 'pdv/cadastrarcliente.html', {'form':form})
 
 @login_required
 def editar_cliente(request, id):
@@ -82,7 +82,7 @@ def editar_cliente(request, id):
     else:
         form = ClienteForm(instance=cliente)
 
-    return render (request, 'pdv/editar_cliente.html', {'form': form})
+    return render (request, 'pdv/editarcliente.html', {'form': form})
 
 
 @login_required 
@@ -91,7 +91,7 @@ def excluir_cliente(request, id):
     if request.method =='POST':
         cliente.delete()
         return redirect('clientes')
-    return render (request, 'pdv/confirmar_exclusao.html', {'cliente':cliente})
+    return render (request, 'pdv/excluircliente.html', {'cliente':cliente})
 
 #reservas - listar as reservas existentes
 @login_required
@@ -110,7 +110,7 @@ def criar_reserva(request):
     else:
         form = ReservaForm()
 
-    return render (request, 'pdv/criar_reserva.html', {'form':form})
+    return render (request, 'pdv/criarreserva.html', {'form':form})
 
 @login_required
 def editar_reserva(request,id):
@@ -122,7 +122,7 @@ def editar_reserva(request,id):
             return redirect ('reservas')
     else:
         form = ReservaForm(instance = reserva)
-    return render (request, 'pdv/editar_reserva.html', {'form':form})
+    return render (request, 'pdv/editarreserva.html', {'form':form})
 
 @login_required
 def excluir_reserva(request,id):
@@ -130,7 +130,7 @@ def excluir_reserva(request,id):
     if request.method == 'POST':
         reserva.delete()
         return redirect('reservas')
-    return render (request, 'pdv/confirmar_exclusao.html', {'reserva': reserva})
+    return render (request, 'pdv/excluirreserva.html', {'reserva': reserva})
 
 #faturamento total do hotel
 @login_required
@@ -154,7 +154,7 @@ def cadastrar_quarto(request):
             return redirect ('quartos')
     else:
         form = QuartoForm()
-    return render (request, 'pdv/cadastrar_quarto.html', {'form':form})
+    return render (request, 'pdv/cadastrarquarto.html', {'form':form})
 
 @login_required
 def cadastrar_despesas(request):
@@ -166,7 +166,7 @@ def cadastrar_despesas(request):
     else:
         form = DespesaForm()
 
-    return render (request, 'pdv/cadastrar_despesas.html', {'form':form})
+    return render (request, 'pdv/cadastrardespesas.html', {'form':form})
 
 @login_required
 def cadastrar_receitas(request):
@@ -179,18 +179,19 @@ def cadastrar_receitas(request):
     else:
         form = ReceitaForm()
 
-    return render(request, 'pdv/cadastrar_receitas.html', {'form':form})
+    return render(request, 'pdv/cadastrarreceitas.html', {'form':form})
     
+
 def listar_quartos(request):
     quartos = Quarto.objects.all()
-    return render(request, 'pdv/quartos/listar.html', {'quartos': quartos})
+    return render(request, 'pdv/listarquarto.html', {'quartos': quartos})
 
 
 # Listar despesas
 @login_required
 def listar_despesas(request):
     despesas = Despesa.objects.all()
-    return render(request, 'pdv/despesas/listar.html', {'despesas': despesas})
+    return render(request, 'pdv/listardespesa.html', {'despesas': despesas})
 
 # Editar despesa
 @login_required
@@ -203,7 +204,7 @@ def editar_despesa(request, id):
             return redirect('listar_despesas')
     else:
         form = DespesaForm(instance=despesa)
-    return render(request, 'pdv/despesas/editar.html', {'form': form})
+    return render(request, 'pdv/editardespesa.html', {'form': form})
 
 # Excluir despesa
 @login_required
@@ -212,13 +213,13 @@ def excluir_despesa(request, id):
     if request.method == 'POST':
         despesa.delete()
         return redirect('listar_despesas')
-    return render(request, 'pdv/despesas/confirmar_exclusao.html', {'despesa': despesa})
+    return render(request, 'pdv/excluirdespesa.html', {'despesa': despesa})
 
 # Listar receitas
 @login_required
 def listar_receitas(request):
     receitas = Receita.objects.all()
-    return render(request, 'pdv/receitas/listar.html', {'receitas': receitas})
+    return render(request, 'pdv/receitas.html', {'receitas': receitas})
 
 # Editar receita
 @login_required
@@ -231,7 +232,7 @@ def editar_receita(request, id):
             return redirect('listar_receitas')
     else:
         form = ReceitaForm(instance=receita)
-    return render(request, 'pdv/receitas/editar.html', {'form': form})
+    return render(request, 'pdv/editarreceita.html', {'form': form})
 
 # Excluir receita
 @login_required
@@ -240,7 +241,7 @@ def excluir_receita(request, id):
     if request.method == 'POST':
         receita.delete()
         return redirect('listar_receitas')
-    return render(request, 'pdv/receitas/confirmar_exclusao.html', {'receita': receita})
+    return render(request, 'pdv/excluirreceita.html', {'receita': receita})
 
 # Editar quarto
 @login_required
@@ -253,7 +254,7 @@ def editar_quarto(request, id):
             return redirect('listar_quartos')
     else:
         form = QuartoForm(instance=quarto)
-    return render(request, 'pdv/quartos/editar.html', {'form': form})
+    return render(request, 'pdv/editarquarto.html', {'form': form})
 
 # Excluir quarto
 @login_required
@@ -262,7 +263,7 @@ def excluir_quarto(request, id):
     if request.method == 'POST':
         quarto.delete()
         return redirect('listar_quartos')
-    return render(request, 'pdv/quartos/confirmar_exclusao.html', {'quarto': quarto})
+    return render(request, 'pdv/excluirquarto.html', {'quarto': quarto})
 
 
 

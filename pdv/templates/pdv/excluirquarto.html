@@ -1,0 +1,103 @@
+{% extends 'pdv/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'globals/style.css' %}">
+<!-- Adicionando um estilo específico para o Hotel Transilvânia -->
+<style>
+    body {
+        background-color: #1a1a1a; /* Fundo escuro */
+        color: #e0e0e0; /* Texto claro */
+        font-family: 'Creepster', cursive; /* Fonte temática */
+    }
+
+    .titulo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titulo h2 {
+        font-size: 2.5rem;
+        color: #ff0000; /* Vermelho */
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    .btn {
+        background-color: #8a2be2; /* Roxo */
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #6a1b9a; /* Roxo mais escuro */
+    }
+
+    .confirmation-box {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #2c2c2c; /* Fundo escuro para o formulário */
+        border: 2px solid #ff0000; /* Borda vermelha */
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .confirmation-box p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-group button, .button-group a {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .button-group button {
+        background-color: #ff0000; /* Vermelho */
+        color: #ffffff;
+    }
+
+    .button-group button:hover {
+        background-color: #cc0000; /* Vermelho mais escuro */
+    }
+
+    .button-group a {
+        background-color: #8a2be2; /* Roxo */
+        color: #ffffff;
+    }
+
+    .button-group a:hover {
+        background-color: #6a1b9a; /* Roxo mais escuro */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="confirmation-box">
+    <div class="excluirquarto">
+        <h2>🦇 Excluir Quarto 🛏️</h2>
+    </div>
+    <p>Tem certeza que deseja excluir o quarto "{{ quarto.numero }}"?</p>
+    <div class="button-group">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">🗑️ Sim, Excluir</button>
+        </form>
+        <a href="{% url 'listarquarto' %}" class="btn">❌ Cancelar</a>
+    </div>
+</div>
+{% endblock %}
