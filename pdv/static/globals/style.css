@@ -1,0 +1,100 @@
+/* global/styles.css ou login/login.css */
+
+
+:root {
+    --primary-color: #2c3e50; 
+    --secondary-color: #c0392b; 
+    --accent-color: #f1c40f; 
+    --background-color: #1a1a1a; 
+    --text-color: #ecf0f1; 
+    --font-family: 'Creepster', cursive, sans-serif; /* Fonte temática */
+  }
+  
+  /* Estilizando o body */
+  body {
+      margin: 0;
+      font-family: var(--font-family); /* Usando a fonte temática */
+      background-color: var(--background-color); 
+      color: var(--text-color); 
+  }
+  
+  /* Estilizando o header */
+  header {
+      background-color: var(--primary-color); 
+      color: var(--text-color);
+      padding: 10px 20px; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      z-index: 1000; 
+      border-bottom: 3px solid var(--secondary-color); 
+  }
+  
+  /* Estilizando a navbar */
+  nav {
+      display: flex; 
+      justify-content: space-around; 
+  }
+  
+  /* Estilizando os links da navbar */
+  nav a {
+      color: var(--text-color); 
+      text-decoration: none; /* Remove o sublinhado */
+      padding: 10px 15px; 
+      transition: background-color 0.3s, color 0.3s; /* Transição suave */
+  }
+  
+  /* Efeito ao passar o mouse sobre os links */
+  nav a:hover {
+      background-color: var(--secondary-color); /* Vermelho escuro ao passar o mouse */
+      color: var(--accent-color); /* Texto dourado ao passar o mouse */
+      border-radius: 5px; 
+  }
+  
+  /* Estilizando o main */
+  main {
+      margin-top: 60px; 
+      padding: 20px;
+  }
+  
+  /* Estilizando o botão */
+  .btn {
+      display: block; 
+      width: 200px; 
+      margin: 20px auto; 
+      padding: 10px; 
+      background-color: var(--secondary-color); 
+      color: var(--text-color); 
+      text-align: center; 
+      text-decoration: none; 
+      border-radius: 5px; 
+      transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+      font-family: var(--font-family); /* Fonte temática */
+      font-size: 1.2rem; 
+  }
+  
+  /* Efeito ao passar o mouse sobre o botão */
+  .btn:hover {
+      background-color: var(--accent-color); 
+      color: var(--background-color); 
+      transform: scale(1.05); 
+  }
+  
+  /* Estilizando o título */
+  .titulo {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 10px; 
+      background-color: var(--primary-color); 
+      border-bottom: 2px solid var(--secondary-color); 
+  }
+  
+  .titulo h2 {
+      margin: 0; 
+      flex-grow: 1; 
+      text-align: center; 
+      color: var(--accent-color); 
+      font-size: 2rem; 
+  }

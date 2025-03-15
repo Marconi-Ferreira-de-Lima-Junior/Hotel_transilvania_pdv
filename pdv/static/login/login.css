@@ -1,0 +1,94 @@
+/* Importa uma fonte temática para um visual mais próximo do filme */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@400;600&display=swap');
+
+/* Estilo geral da página */
+body {
+    background: linear-gradient(to bottom, #1a1a1a, #2c3e50); /* Tons de preto e azul escuro */
+    color: #ecf0f1; /* Texto claro */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container do login */
+.login-container {
+    background: rgba(44, 62, 80, 0.9); /* Fundo azul escuro translúcido */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(241, 196, 15, 0.5); /* Sombra dourada */
+    text-align: center;
+    width: 350px;
+}
+
+/* Título do formulário */
+h2 {
+    font-family: 'Creepster', cursive; /* Fonte temática */
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #f1c40f; /* Amarelo dourado */
+}
+
+/* Estilização dos labels */
+label {
+    display: block;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #ecf0f1; /* Texto claro */
+}
+
+/* Campos de entrada */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #c0392b; /* Vermelho escuro */
+    border-radius: 6px;
+    background: #34495e; /* Azul mais claro */
+    color: #ecf0f1; /* Texto claro */
+    font-size: 16px;
+}
+
+/* Botão de login */
+button {
+    background: #c0392b; /* Vermelho escuro */
+    color: #ecf0f1; /* Texto claro */
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: #e74c3c; /* Vermelho mais claro ao passar o mouse */
+    transform: scale(1.05);
+}
+
+/* Link de registro */
+p {
+    color: #ecf0f1; /* Texto claro */
+    margin-top: 10px;
+}
+
+p a {
+    color: #f1c40f; /* Amarelo dourado */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 400px) {
+    .login-container {
+        width: 90%;
+    }
+}

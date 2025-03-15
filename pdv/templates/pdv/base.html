@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Transilvânia PDV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'globals/style.css' %}">
+
+</head>
+<body>
+    {% with excluded_routes='/login/','/register/' %}
+        {% if request.path not in excluded_routes %}
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Início</a></li>
+                    <li><a href="{% url 'reservas' %}">Reservas</a></li>
+                    <li><a href="{% url 'quartos' %}">Quartos</a></li>
+                    <li><a href="{% url 'despesas' %}">Despesas</a></li>
+                    <li><a href="{% url 'receitas' %}">Receitas</a></li>
+                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                </ul>
+            </nav>
+        {% endif %}
+    {% endwith %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
