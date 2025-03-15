@@ -37,7 +37,7 @@ def register_view(request):
             return redirect('login')
     else:
         form = UserRegistrationForm()
-    return render(request, 'hotel_transilvania_pdv/register.html', {'form':form}) 
+    return render(request, 'pdv/register.html', {'form':form}) 
 
 #dashboard - reservas e ocupação
 @login_required
@@ -46,7 +46,7 @@ def dashboard(request):
     total_reserva = Reserva.objects.count()
     quartos_disponiveis = Quarto.objects.filter(disponivel=True).count()#filtra os quartos disponiveis
 
-    return render(request,'hotel_transilvania_pdv/dashboard.html', {
+    return render(request,'pdv/dashboard.html', {
         'total_clientes':total_clientes,
         'total_reserva':total_reserva,
         'quartos_disponiveis':quartos_disponiveis   
@@ -56,7 +56,7 @@ def dashboard(request):
 @login_required
 def clientes_view(request):
     clientes = Cliente.objects.all()
-    return render(request, 'hotel_transilvania_pdv/clientes.html', {'clientes':clientes})
+    return render(request, 'pdv/clientes.html', {'clientes':clientes})
 
 #cadastro de clientes
 @login_required
@@ -69,7 +69,7 @@ def cadastrar_cliente(request):
     else:
         form = ClienteForm()
     
-    return render(request, 'hotel_transilvania_pdv/cadastrar_cliente.html', {'form':form})
+    return render(request, 'pdv/cadastrar_cliente.html', {'form':form})
 
 @login_required
 def editar_cliente(request, id):
@@ -82,7 +82,7 @@ def editar_cliente(request, id):
     else:
         form = ClienteForm(instance=cliente)
 
-    return render (request, 'hotel_transilvania_pdv/editar_cliente.html', {'form': form})
+    return render (request, 'pdv/editar_cliente.html', {'form': form})
 
 
 @login_required 
@@ -91,13 +91,13 @@ def excluir_cliente(request, id):
     if request.method =='POST':
         cliente.delete()
         return redirect('clientes')
-    return render (request, 'hotel_transilvania_pdv/confirmar_exclusao.html', {'cliente':cliente})
+    return render (request, 'pdv/confirmar_exclusao.html', {'cliente':cliente})
 
 #reservas - listar as reservas existentes
 @login_required
 def reservas_view(request):
     reservas = Reserva.objects.all()
-    return render (request, 'hotel_transilvania_pdv/reservas.html',{'reservas':reservas})
+    return render (request, 'pdv/reservas.html',{'reservas':reservas})
 
 #criar as reservas
 @login_required
@@ -110,7 +110,7 @@ def criar_reserva(request):
     else:
         form = ReservaForm()
 
-    return render (request, 'hotel_transilvania_pdv/criar_reserva.html', {'form':form})
+    return render (request, 'pdv/criar_reserva.html', {'form':form})
 
 @login_required
 def editar_reserva(request,id):
@@ -122,7 +122,7 @@ def editar_reserva(request,id):
             return redirect ('reservas')
     else:
         form = ReservaForm(instance = reserva)
-    return render (request, 'hotel_transilvania_pdv/editar_reserva.html', {'form':form})
+    return render (request, 'pdv/editar_reserva.html', {'form':form})
 
 @login_required
 def excluir_reserva(request,id):
@@ -130,7 +130,7 @@ def excluir_reserva(request,id):
     if request.method == 'POST':
         reserva.delete()
         return redirect('reservas')
-    return render (request, 'hotel_transilvania_pdv/confirmar_exclusao.html', {'reserva': reserva})
+    return render (request, 'pdv/confirmar_exclusao.html', {'reserva': reserva})
 
 #faturamento total do hotel
 @login_required
@@ -139,7 +139,7 @@ def relatorios_view(request):
     total_despesas = sum(despesa.valor for despesa in Despesa.objects.all())
     saldo_total = total_receitas - total_despesas
 
-    return render (request, 'hotel_transilvania_pdv/relatorios.html', {
+    return render (request, 'pdv/relatorios.html', {
         'total_receitas':total_receitas,
         'total_despesas':total_despesas,
         'saldo_total':saldo_total
@@ -154,7 +154,7 @@ def cadastrar_quarto(request):
             return redirect ('quartos')
     else:
         form = QuartoForm()
-    return render (request, 'hotel_transilvania_pdv/cadastrar_quarto.html', {'form':form})
+    return render (request, 'pdv/cadastrar_quarto.html', {'form':form})
 
 @login_required
 def cadastrar_despesas(request):
@@ -166,7 +166,7 @@ def cadastrar_despesas(request):
     else:
         form = DespesaForm()
 
-    return render (request, 'hotel_transilvania_pdv/cadastrar_despesas.html', {'form':form})
+    return render (request, 'pdv/cadastrar_despesas.html', {'form':form})
 
 @login_required
 def cadastrar_receitas(request):
@@ -179,18 +179,18 @@ def cadastrar_receitas(request):
     else:
         form = ReceitaForm()
 
-    return render(request, 'hotel_transilvania_pdv/cadastrar_receitas.html', {'form':form})
+    return render(request, 'pdv/cadastrar_receitas.html', {'form':form})
     
 def listar_quartos(request):
     quartos = Quarto.objects.all()
-    return render(request, 'hotel_transilvania_pdv/quartos/listar.html', {'quartos': quartos})
+    return render(request, 'pdv/quartos/listar.html', {'quartos': quartos})
 
 
 # Listar despesas
 @login_required
 def listar_despesas(request):
     despesas = Despesa.objects.all()
-    return render(request, 'hotel_transilvania_pdv/despesas/listar.html', {'despesas': despesas})
+    return render(request, 'pdv/despesas/listar.html', {'despesas': despesas})
 
 # Editar despesa
 @login_required
@@ -203,7 +203,7 @@ def editar_despesa(request, id):
             return redirect('listar_despesas')
     else:
         form = DespesaForm(instance=despesa)
-    return render(request, 'hotel_transilvania_pdv/despesas/editar.html', {'form': form})
+    return render(request, 'pdv/despesas/editar.html', {'form': form})
 
 # Excluir despesa
 @login_required
@@ -212,13 +212,13 @@ def excluir_despesa(request, id):
     if request.method == 'POST':
         despesa.delete()
         return redirect('listar_despesas')
-    return render(request, 'hotel_transilvania_pdv/despesas/confirmar_exclusao.html', {'despesa': despesa})
+    return render(request, 'pdv/despesas/confirmar_exclusao.html', {'despesa': despesa})
 
 # Listar receitas
 @login_required
 def listar_receitas(request):
     receitas = Receita.objects.all()
-    return render(request, 'hotel_transilvania_pdv/receitas/listar.html', {'receitas': receitas})
+    return render(request, 'pdv/receitas/listar.html', {'receitas': receitas})
 
 # Editar receita
 @login_required
@@ -231,7 +231,7 @@ def editar_receita(request, id):
             return redirect('listar_receitas')
     else:
         form = ReceitaForm(instance=receita)
-    return render(request, 'hotel_transilvania_pdv/receitas/editar.html', {'form': form})
+    return render(request, 'pdv/receitas/editar.html', {'form': form})
 
 # Excluir receita
 @login_required
@@ -240,7 +240,7 @@ def excluir_receita(request, id):
     if request.method == 'POST':
         receita.delete()
         return redirect('listar_receitas')
-    return render(request, 'hotel_transilvania_pdv/receitas/confirmar_exclusao.html', {'receita': receita})
+    return render(request, 'pdv/receitas/confirmar_exclusao.html', {'receita': receita})
 
 # Editar quarto
 @login_required
@@ -253,7 +253,7 @@ def editar_quarto(request, id):
             return redirect('listar_quartos')
     else:
         form = QuartoForm(instance=quarto)
-    return render(request, 'hotel_transilvania_pdv/quartos/editar.html', {'form': form})
+    return render(request, 'pdv/quartos/editar.html', {'form': form})
 
 # Excluir quarto
 @login_required
@@ -262,7 +262,7 @@ def excluir_quarto(request, id):
     if request.method == 'POST':
         quarto.delete()
         return redirect('listar_quartos')
-    return render(request, 'hotel_transilvania_pdv/quartos/confirmar_exclusao.html', {'quarto': quarto})
+    return render(request, 'pdv/quartos/confirmar_exclusao.html', {'quarto': quarto})
 
 
 

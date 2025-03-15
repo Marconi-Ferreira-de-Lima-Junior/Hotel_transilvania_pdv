@@ -1,0 +1,102 @@
+{% extends 'pdv/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'globals/style.css' %}">
+<!-- Adicionando um estilo específico para o Hotel Transilvânia -->
+<style>
+    body {
+        background-color: #1a1a1a; /* Fundo escuro */
+        color: #e0e0e0; /* Texto claro */
+        font-family: 'Creepster', cursive; /* Fonte temática */
+    }
+
+    .titulo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titulo h2 {
+        font-size: 2.5rem;
+        color: #8a2be2; /* Roxo */
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    .btn {
+        background-color: #8a2be2; /* Roxo */
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #6a1b9a; /* Roxo mais escuro */
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #2c2c2c; /* Fundo escuro para o formulário */
+        border: 2px solid #8a2be2; /* Borda roxa */
+        border-radius: 10px;
+    }
+
+    form p {
+        margin-bottom: 15px;
+    }
+
+    form label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 1.1rem;
+        color: #8a2be2; /* Roxo */
+    }
+
+    form input, form textarea, form select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #8a2be2; /* Borda roxa */
+        border-radius: 5px;
+        background-color: #1a1a1a; /* Fundo escuro */
+        color: #e0e0e0; /* Texto claro */
+        font-size: 1rem;
+    }
+
+    form input:focus, form textarea:focus, form select:focus {
+        border-color: #6a1b9a; /* Roxo mais escuro */
+        outline: none;
+    }
+
+    form button[type="submit"] {
+        background-color: #8a2be2; /* Roxo */
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    form button[type="submit"]:hover {
+        background-color: #6a1b9a; /* Roxo mais escuro */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <div class="titulo">
+        <h2>🦇 Criar Nova Reserva 🗝️</h2>
+        <a href="{% url 'criar_reservas' %}" class="btn">🔙 Voltar</a>
+    </div>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">💾 Salvar</button>
+</form>
+{% endblock %}

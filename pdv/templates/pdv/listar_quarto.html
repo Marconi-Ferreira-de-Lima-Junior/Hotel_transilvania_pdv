@@ -1,0 +1,107 @@
+{% extends 'pdv/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'globals/style.css' %}">
+<!-- Adicionando um estilo específico para o Hotel Transilvânia -->
+<style>
+    body {
+        background-color: #1a1a1a; /* Fundo escuro */
+        color: #e0e0e0; /* Texto claro */
+        font-family: 'Creepster', cursive; /* Fonte temática */
+    }
+
+    .titulo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titulo h2 {
+        font-size: 2.5rem;
+        color: #8a2be2; /* Roxo */
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    .btn {
+        background-color: #8a2be2; /* Roxo */
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #6a1b9a; /* Roxo mais escuro */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #2c2c2c; /* Fundo escuro para a tabela */
+        border: 2px solid #8a2be2; /* Borda roxa */
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #8a2be2; /* Linhas roxas */
+    }
+
+    th {
+        background-color: #8a2be2; /* Cabeçalho roxo */
+        color: #ffffff;
+        font-size: 1.2rem;
+    }
+
+    tr:hover {
+        background-color: #3c3c3c; /* Efeito hover escuro */
+    }
+
+    .acoes {
+        text-align: center;
+    }
+
+    .acoes a {
+        margin: 0 5px;
+        color: #8a2be2; /* Roxo */
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .acoes a:hover {
+        color: #6a1b9a; /* Roxo mais escuro */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="titulo">
+    <h2>🦇 Lista de Quartos 🛏️</h2>
+    <a href="{% url 'listar_quartos' %}" class="btn">➕ Adicionar Quarto</a>
+</div>
+<table>
+    <tr>
+        <th>Número do Quarto</th>
+        <th>Tipo</th>
+        <th>Preço por Noite</th>
+        <th>Status</th>
+        <th class="acoes">Ações</th>
+    </tr>
+    {% for quarto in quartos %}
+    <tr>
+        <td>{{ quarto.numero }}</td>
+        <td>{{ quarto.tipo }}</td>
+        <td>R$ {{ quarto.preco_noite }}</td>
+        <td>{{ quarto.status }}</td>
+        <td class="acoes">
+            <a href="{% url 'editar_quarto' quarto.id %}">✏️ Editar</a>
+            <a href="{% url 'excluir_quarto' quarto.id %}">❌ Excluir</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

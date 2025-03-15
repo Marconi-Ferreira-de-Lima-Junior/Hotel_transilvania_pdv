@@ -4,7 +4,7 @@ from .views import (
     clientes_view, cadastrar_cliente, editar_cliente, excluir_cliente,
     reservas_view, criar_reserva, editar_reserva, excluir_reserva,
     relatorios_view, cadastrar_quarto, cadastrar_despesas, editar_despesa, excluir_despesa,
-    cadastrar_receitas, editar_receita, excluir_receita, listar_quartos, detalhes_quarto
+    cadastrar_receitas, editar_receita, excluir_receita, listar_quartos
 )
 
 urlpatterns = [
@@ -33,7 +33,7 @@ urlpatterns = [
 
     # Quartos
     path('quartos/', listar_quartos, name='listar_quartos'),
-    path('quartos/<int:id>/', detalhes_quarto, name='detalhes_quarto'),
+    # path('quartos/<int:id>/', detalhes_quarto, name='detalhes_quarto'),
     path('quartos/novo/', cadastrar_quarto, name='cadastrar_quarto'),
 
     # Despesas
