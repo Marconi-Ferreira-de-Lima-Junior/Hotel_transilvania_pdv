@@ -33,7 +33,8 @@ urlpatterns = [
 
     # Quartos
     path('quartos/', listar_quartos, name='listar_quartos'),
-    # path('quartos/<int:id>/', detalhes_quarto, name='detalhes_quarto'),
+    path('quartos/editar/<int:id>/', editar_quarto, name='editar_quarto'),
+    path('quartos/excluir/<int:id>/', excluir_quarto, name='excluir_quarto')
     path('quartos/novo/', cadastrar_quarto, name='cadastrar_quarto'),
 
     # Despesas

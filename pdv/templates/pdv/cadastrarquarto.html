@@ -92,8 +92,8 @@
 {% block content %}
 <form method="post">
     <div class="cadastrar_quarto">
-        <h2>🦇 Cadastrar Novo Quarto 🛏️</h2>
-        <a href="{% url 'cadastrarquarto' %}" class="btn">🔙 Voltar</a>
+        <h2>🦇 Cadastrar Novo Quarto 🛏️</h2>    
+        <a href="{% url 'cadastrar_quarto' %}" class="btn">🔙 Voltar</a>
     </div>
     {% csrf_token %}
     {{ form.as_p }}

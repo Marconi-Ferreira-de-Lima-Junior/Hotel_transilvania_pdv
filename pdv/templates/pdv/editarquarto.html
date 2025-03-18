@@ -93,10 +93,10 @@
 <form method="post">
     <div class="editar_quarto">
         <h2>🦇 Editar Quarto 🛏️</h2>
-        <a href="{% url 'listarquarto' %}" class="btn">🔙 Voltar</a>
+        <a href="{% url 'listar_quarto' %}" class="btn">🔙 Voltar</a>
     </div>
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">💾 Salvar Alterações</button>
+    <button type="submit">💾 Salvar Alterações</button>x
 </form>
 {% endblock %}

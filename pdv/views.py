@@ -151,7 +151,7 @@ def cadastrar_quarto(request):
         form = QuartoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect ('quartos')
+            return redirect ('cadastrar_quarto')
     else:
         form = QuartoForm()
     return render (request, 'pdv/cadastrarquarto.html', {'form':form})

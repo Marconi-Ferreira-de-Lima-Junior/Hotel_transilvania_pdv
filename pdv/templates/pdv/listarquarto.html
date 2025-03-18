@@ -81,7 +81,7 @@
 {% block content %}
 <div class="listar_quartos">
     <h2>🦇 Lista de Quartos 🛏️</h2>
-    <a href="{% url 'cadastrarquarto' %}" class="btn">➕ Adicionar Quarto</a>
+    <a href="{% url 'cadastrar_quarto' %}" class="btn">➕ Adicionar Quarto</a>
 </div>
 <table>
     <tr>
@@ -98,8 +98,8 @@
         <td>R$ {{ quarto.preco_noite }}</td>
         <td>{{ quarto.status }}</td>
         <td class="acoes">
-            <a href="{% url 'editarquarto' quarto.id %}">✏️ Editar</a>
-            <a href="{% url 'excluirquarto' quarto.id %}">❌ Excluir</a>
+            <a href="{% url 'editar_quarto' quarto.id %}">✏️ Editar</a>
+            <a href="{% url 'excluir_quarto' quarto.id %}">❌ Excluir</a>
         </td>
     </tr>
     {% endfor %}

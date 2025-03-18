@@ -95,9 +95,9 @@
     <div class="button-group">
         <form method="post">
             {% csrf_token %}
-            <button type="submit">🗑️ Sim, Excluir</button>
+            <button type="submit">🗑️ Excluir</button>
         </form>
-        <a href="{% url 'listarquarto' %}" class="btn">❌ Cancelar</a>
+        <a href="{% url 'listar_quarto' %}" class="btn">❌ Cancelar</a>
     </div>
 </div>
 {% endblock %}
